@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Αποθήκευση Φοιτητή</title>
+<meta charset="utf-8">
 <style>
 table {
   border-collapse: collapse;
@@ -33,14 +33,15 @@ tr:hover {background-color:#f5f5f5;}
 
 .button3 {background-color: #f44336;} /* Red */ 
 </style>
+<title>Επεξεργασία Στοιχείων Φοιτητή</title>
 </head>
+
 <body>
-
 <h2>Σύστημα Διαχείρισης Αιτήσεων Σίτισης</h2>
-
+  
 <div id="container">
 	
-	<form:form action="saveStudent" modelAttribute="student" method="POST" >
+	<form:form action="showFormProfileEdit" modelAttribute="student" method="POST" >
 		
 		<!-- need to associate this data with student id -->
 		<form:hidden path="id" />
@@ -51,7 +52,6 @@ tr:hover {background-color:#f5f5f5;}
 					<td><label>AM:</label></td>
 					<td><form:input path="codeNumber"/></td>
 				</tr>
-				
 				<tr>
 					<td><label>Όνομα:</label></td>
 					<td><form:input path="firstName"/></td>
@@ -67,9 +67,10 @@ tr:hover {background-color:#f5f5f5;}
 					<td><form:input path="email"/></td>
 				</tr>
 				
+				
 			</tbody>
 		</table>
-		<input type="button" value="Ακύρωση" class="button button3" onclick="window.location.href='/Esoteriko/student/list';"/>
+		<input type="button" value="Aκύρωση" class="button button3" onclick="window.location.href='/Esoteriko/student/list';"/>
 		<input type="submit" value="Επόμενο" class="button"/>
 	</form:form>
 	

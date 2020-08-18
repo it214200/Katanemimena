@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Λίστα Φοιτητών</title>
+<title>Σίτιση</title>
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -17,7 +17,7 @@
 	<nav class="navbar navbar-light bg-light">
   		<a class="navbar-brand" href="/Esoteriko/">
     		<img src="<c:url value="/resources/dit-logo.png" />" alt="" width="150" height="50" class="d-inline-block align-top" loading="lazy">
-    		Σύστημα Διαχείρισης Αιτήσεων Σίτισης - Φοιτητές
+    		Σύστημα Διαχείρισης Αιτήσεων Σίτισης
   		</a>
 	</nav>
 	
@@ -26,41 +26,39 @@
 		<table class="table table-sm">
 			<thead class="thead-dark">
 				<tr>
-					<th>Όνομα</th>
-					<th>Επίθετο</th>
-					<th>AM</th>
-					<th>Email</th>
+					<th>Τμήμα</th>
+					<th>Συν.Φοιτητών</th>
+					<th>Δικαούχοι</th>
+					<th>Περίοδος Σίτισης</th>
+					<th>Περίοδος Αιτήσεων</th>
 					<th>Ενέργεια</th>
 				</tr>
 			</thead>
 			<!-- loop over and print our students -->
-			<c:forEach var="tempStudent" items="${students}">
+			<c:forEach var="temp" items="${feedList}" varStatus="status">
 
 				<!-- Construct an update link with student id -->
-				<c:url var="editLink" value="/student/showFormForEdit">
-					<c:param name="studentId" value="${tempStudent.id}" />
+				<c:url var="viewLink" value="/feeding/view">
+					<c:param name="feedingId" value="${temp.id}" />
 				</c:url>
 
 				<!-- Construct an delete link with student id -->
 				<c:url var="deleteLink" value="/student/delete">
-					<c:param name="studentId" value="${tempStudent.id}" />
+					<c:param name="studentId" value="${temp.id}" />
 				</c:url>
 				
-				<!-- Construct an profile link with student id -->
-				<c:url var="profileLink" value="/student/profile">
-					<c:param name="studentId" value="${tempStudent.id}" />
-				</c:url>
+				
 				<tbody>
 					<tr>
-						<td>${tempStudent.firstName}</td>
-						<td>${tempStudent.lastName}</td>
-						<td>${tempStudent.codeNumber}</td>
-						<td>${tempStudent.email}</td>
+						<td>${depName[status.index]}</td>
+						<td>${years[status.index]}/${maxStudents[status.index]}</td>
+						<td>${winners[status.index]}/${temp.maxStudents}</td>
+						<td>${temp.feedStart}-${temp.feedEnd}</td>
+						<td>${temp.appStart}-${temp.appEnd}</td>
 						<td>
 							<!-- display the edit link --> 
-							<a href="${editLink}">Επεξεργασία</a> | 
-							<a href="${deleteLink}">Διαγραφή</a> |
-							<a href="${profileLink}">Προφίλ</a>
+							<a href="${viewLink}">Λίστα Φοιτητών</a> | 
+							<a href="${editLink}">Επεξεργασία</a>
 						</td>
 					</tr>
 				</tbody>

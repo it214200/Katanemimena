@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Λίστα Φοιτητών</title>
+<title>Σίτιση</title>
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -26,42 +26,25 @@
 		<table class="table table-sm">
 			<thead class="thead-dark">
 				<tr>
+					<th>Τμήμα</th>
 					<th>Όνομα</th>
 					<th>Επίθετο</th>
 					<th>AM</th>
 					<th>Email</th>
-					<th>Ενέργεια</th>
+					<th>Περίοδος Σίτισης</th>
 				</tr>
 			</thead>
 			<!-- loop over and print our students -->
-			<c:forEach var="tempStudent" items="${students}">
-
-				<!-- Construct an update link with student id -->
-				<c:url var="editLink" value="/student/showFormForEdit">
-					<c:param name="studentId" value="${tempStudent.id}" />
-				</c:url>
-
-				<!-- Construct an delete link with student id -->
-				<c:url var="deleteLink" value="/student/delete">
-					<c:param name="studentId" value="${tempStudent.id}" />
-				</c:url>
+			<c:forEach var="temp" items="${students}" >
 				
-				<!-- Construct an profile link with student id -->
-				<c:url var="profileLink" value="/student/profile">
-					<c:param name="studentId" value="${tempStudent.id}" />
-				</c:url>
 				<tbody>
 					<tr>
-						<td>${tempStudent.firstName}</td>
-						<td>${tempStudent.lastName}</td>
-						<td>${tempStudent.codeNumber}</td>
-						<td>${tempStudent.email}</td>
-						<td>
-							<!-- display the edit link --> 
-							<a href="${editLink}">Επεξεργασία</a> | 
-							<a href="${deleteLink}">Διαγραφή</a> |
-							<a href="${profileLink}">Προφίλ</a>
-						</td>
+						<td>${dName}</td>
+						<td>${temp.firstName}</td>
+						<td>${temp.lastName}</td>
+						<td>${temp.codeNumber}</td>
+						<td>${temp.email}</td>
+						<td>${feedingPeriod}</td>
 					</tr>
 				</tbody>
 			</c:forEach>
@@ -70,8 +53,6 @@
 		<input type="button" class="btn btn-danger" value="Επιστροφή"
 			onclick="window.location.href='/Esoteriko';" />
 			
-		<input type="button" class="btn btn-success" value="Προσθήκη Φοιτητή"
-			onclick="window.location.href='showFormForAdd'; return false;" />
 	</div>
 	
 </body>

@@ -14,4 +14,7 @@ public interface StudentDAO {
 	public Student getStudent(int id);
 
 	public void deleteStudent(int id);
+
+	public Student getStudentByCodeNumber(String am);
+		
 }

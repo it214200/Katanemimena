@@ -4,13 +4,17 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import gr.hua.dit.entity.Department;
 import gr.hua.dit.entity.Student;
+import gr.hua.dit.entity.StudentApplication;
 
 @Repository
 public class StudentDAOImpl implements StudentDAO {
@@ -78,4 +82,16 @@ public class StudentDAOImpl implements StudentDAO {
 		
 	}
 
+	@Override
+	@Transactional
+	public Student getStudentByCodeNumber(String am) {
+		
+		// get current hibernate session
+        Session currentSession = sessionFactory.getCurrentSession();
+        
+        Criteria criteria =  currentSession.createCriteria(Student.class); 
+        Student student = (Student) criteria.add(Restrictions.eq("codeNumber", am)).uniqueResult();
+       
+        return student;
+	}
 }
