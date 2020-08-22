@@ -34,10 +34,6 @@ public class Department {
 	@Column(name = "maxStudents")
 	private int maxStudents;
 	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="feeding_id")
-	private Feeding feeding;
-
 	// fetch=FetchType.LAZY
 	@OneToMany(mappedBy="department",cascade= {CascadeType.PERSIST, CascadeType.MERGE,
 			CascadeType.DETACH, CascadeType.REFRESH})
@@ -48,6 +44,7 @@ public class Department {
 	}
 
 	public Department(String dName, String dCreated, int maxStudents) {
+		super();
 		this.dName = dName;
 		this.dCreated = dCreated;
 		this.maxStudents = maxStudents;
@@ -92,15 +89,7 @@ public class Department {
 	public void setMaxStudents(int maxStudents) {
 		this.maxStudents = maxStudents;
 	}
-
-	public Feeding getFeeding() {
-		return feeding;
-	}
-
-	public void setFeeding(Feeding feeding) {
-		this.feeding = feeding;
-	}
-
+	
 	public void add(Student student) {
 		
 		if(students == null) {
@@ -114,7 +103,7 @@ public class Department {
 	@Override
 	public String toString() {
 		return "Department [id=" + id + ", dName=" + dName + ", dCreated=" + dCreated + ", maxStudents=" + maxStudents
-				+ ", feeding=" + feeding + ", students=" + students + "]";
+				+ ", appStart=" + ", students=" + students + "]";
 	}
 
 }

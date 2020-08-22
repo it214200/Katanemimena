@@ -7,8 +7,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<properties>
+		<org.springsecurity.version>5.2.1.RELEASE</org.springsecurity.version>
 		<org.springframework.version>5.2.2.RELEASE</org.springframework.version>
-		<hibernate.version>5.3.7.Final</hibernate.version>
+		<hibernate.version>5.4.10.Final</hibernate.version>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -35,6 +36,31 @@
 			<version>${org.springframework.version}</version>
 		</dependency>
 
+		<!-- Add Jackson for JSON converters -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>[2.9.8,)</version>
+		</dependency>
+		
+		<!--  Spring Security  -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${org.springsecurity.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${org.springsecurity.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${org.springsecurity.version}</version>
+		</dependency>
 
 		<!-- Hibernate -->
 		<dependency>
@@ -53,9 +79,9 @@
 			<version>${hibernate.version}</version>
 		</dependency>
 		<dependency>
-  			<groupId>org.hibernate.validator</groupId>
-  			<artifactId>hibernate-validator</artifactId>
-  			<version>6.1.5.Final</version>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.1.5.Final</version>
 		</dependency>
 
 		<!-- mysql jdbc -->

@@ -55,11 +55,6 @@ public class Student {
 	@JoinColumn(name="dept_id")
 	private Department department;
 	
-	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-			CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name="feed_id")
-	private Feeding feeding;
-	
 	public Student() {
 	}
 
@@ -134,14 +129,6 @@ public class Student {
 		this.department = department;
 	}
 
-	public Feeding getFeeding() {
-		return feeding;
-	}
-
-	public void setFeeding(Feeding feeding) {
-		this.feeding = feeding;
-	}
-
 	public void add(StudentApplication application) {
 		if(applications == null) {
 			applications = new ArrayList<>();
@@ -154,7 +141,7 @@ public class Student {
 	public String toString() {
 		return "Student [id=" + id + ", codeNumber=" + codeNumber + ", firstName=" + firstName + ", lastName="
 				+ lastName + ", email=" + email + ", studentProfile=" + studentProfile + ", applications="
-				+ applications + ", department=" + department + ", feeding=" + feeding + "]";
+				+ applications + ", department=" + department + "]";
 	}
 
 }

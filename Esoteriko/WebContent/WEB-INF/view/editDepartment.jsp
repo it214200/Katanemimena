@@ -80,12 +80,8 @@ a:hover, a:active {
 			</tr>
 			</c:forEach>
 		</tbody>
-		<tr>
-			<td>
-				<input type="button" value="Επιστροφή" class="button" onclick="window.location.href='/Esoteriko/department/list';" />	
-			</td>
-		</tr>
 </table>
+<input type="button" value="Επιστροφή" class="button" onclick="window.location.href='/Esoteriko/department/list';" />	
 
 </body>
 </html>

@@ -285,7 +285,19 @@ public class ApplicationController {
 		return "list-nonValidApplications";
 	}
 	
-
+	@GetMapping("/rules")
+	public String rules() {
+		
+		return "rules";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

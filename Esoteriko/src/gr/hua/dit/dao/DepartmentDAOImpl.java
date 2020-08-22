@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.hibernate.query.Query;
@@ -66,19 +68,12 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 
 	@Override
 	@Transactional
-	public List<Department> getDepartmentsWithoutFeed() {
-		
+	public void saveDepartment(Department dep) {
+
 		// get current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
         
-        Query<Department> query = currentSession.
-        		createQuery("select i from Department i "
-        				    + "where i.feeding_id=:feed_id",Department.class);
-        		
-        query.setParameter("feed_id", null);
-        
-        List<Department> departments = query.list();
-		
-		return departments;
+        currentSession.saveOrUpdate(dep);
 	}
+
 }

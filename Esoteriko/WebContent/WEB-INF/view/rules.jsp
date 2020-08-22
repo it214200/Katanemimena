@@ -24,7 +24,7 @@
   		</a>
 	</nav>
 
-	<br>
+	
 	<ul class="list-group list-group-flush">
 		<li class="list-group-item" style="width: 800px"><b>Κανόνες</b></li>
   		<li class="list-group-item" style="width: 800px">1.Όλοι οι φοιτητές δικαιούνται να κάνουν μια αιτηση στο κάθε εξάμηνο</li>

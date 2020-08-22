@@ -74,13 +74,11 @@ tr:hover {background-color:#f5f5f5;}
 			<th scope="row">Εγκρίθηκε:</th>
 			<td>${application.validated}</td>
 		</tr>
-		<tr>
-			<td>
-				<input type="button" class="button" value="Back" onclick="window.location.href='/Esoteriko/application/list';" />	
-			</td>
-		</tr>
+		
 	</tbody>
+	
 </table>
-
+	<input type="button" class="button" value="Back" onclick="window.location.href='/Esoteriko/application/list';" />	
+	
 </body>
 </html>

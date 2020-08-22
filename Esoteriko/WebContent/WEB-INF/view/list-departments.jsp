@@ -53,7 +53,7 @@
 						<td>
 							<!-- display the edit link --> 
 							<a href="${editLink}">Επεξεργασία</a> | 
-							<a href="${viewLink}">Σύνοψη</a>
+							<a href="${viewLink}">Λίστα Φοιτητών</a>
 						</td>
 					</tr>
 				</tbody>

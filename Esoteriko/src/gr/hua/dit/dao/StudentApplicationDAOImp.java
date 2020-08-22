@@ -109,5 +109,34 @@ public class StudentApplicationDAOImp implements StudentApplicationDAO {
 		
 		return applications;
 	}
+
+	@Override
+	@Transactional
+	public List<StudentApplication> getApplications2() {
+		
+		
+		// TODO Auto-generated method stub
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// delete object with primary key
+		Query<StudentApplication> query = currentSession.createQuery(
+		"from StudentApplication i "
+		+ "JOIN FETCH i.student",StudentApplication.class);
+		
+		List<StudentApplication> applications = query.list();
+		
+		return applications;
+	}
+
+	@Override
+	@Transactional
+	public void deleteApp(StudentApplication application) {
+		// TODO Auto-generated method stub
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		currentSession.delete(application);
+		
+	}
 	
 }

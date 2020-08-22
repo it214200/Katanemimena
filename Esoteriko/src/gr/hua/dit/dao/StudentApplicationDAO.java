@@ -12,4 +12,6 @@ public interface StudentApplicationDAO {
 	public StudentApplication getApplicationbyPoints(String points);
 	public void deleteApplication(int id);
 	public List<StudentApplication> getNonValidApplications();
+	public List<StudentApplication> getApplications2();
+	public void deleteApp(StudentApplication application);
 }

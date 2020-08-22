@@ -1,3 +1,7 @@
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+
 <%@page pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -44,20 +48,10 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="/Esoteriko/application/list">Αιτήσεις</a>
           <a class="dropdown-item" href="/Esoteriko/application/nonValid">Μη έγκυρες Αιτήσεις</a>
-          <a class="dropdown-item" href="#">Δημιουργία νέας αίτησης</a>
+          <a class="dropdown-item" href="/Esoteriko/application/rules">Κανόνες</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Σίτιση
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="/Esoteriko/feeding/list">Σίτιση</a>
-          <a class="dropdown-item" href="/Esoteriko/feeding/winners">Δικαούχοι</a>
-          <a class="dropdown-item" href="/Esoteriko/feeding/nonValid">Νέα Σίτιση</a>
-          <a class="dropdown-item" href="/Esoteriko/feeding/rules">Κανόνες</a>
-        </div>
-      </li>
+      
         <li class="nav-item">
         	<b class="nav-link">Σύστημα Διαχείρισης Αιτήσεων Σίτισης</b>
       	</li>
@@ -66,7 +60,18 @@
   </div>
 </nav>
 
+<!-- Display User ID -->
+<p>
+	User:<security:authentication property="principal.username"/>
+	<br></br>
+	Role:<security:authentication property="principal.authorities"/>
+</p>
 
+<br></br>
+<!-- Logout button -->
+<form:form action="${pageContext.request.contextPath}/authUser" method="POST">
+	<input type="submit" name="Logout" value="Logout"/>
+</form:form>
 
 
 <!-- Optional JavaScript -->

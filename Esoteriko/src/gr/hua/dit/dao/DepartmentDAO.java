@@ -8,5 +8,5 @@ public interface DepartmentDAO {
 	public List<Department> getDepartments();
 	public Department getDepartment(int id);
 	public Department getDepartment2(int id);
-	public List<Department> getDepartmentsWithoutFeed();
+	public void saveDepartment(Department dep);
 }

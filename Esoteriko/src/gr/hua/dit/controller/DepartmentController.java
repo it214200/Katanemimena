@@ -19,10 +19,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import gr.hua.dit.dao.DepartmentDAO;
+import gr.hua.dit.dao.StudentApplicationDAO;
 import gr.hua.dit.dao.StudentDAO;
 import gr.hua.dit.dao.StudentProfileDAO;
 import gr.hua.dit.entity.Department;
 import gr.hua.dit.entity.Student;
+import gr.hua.dit.entity.StudentApplication;
 import gr.hua.dit.entity.StudentProfile;
 
 @Controller
@@ -38,6 +40,9 @@ public class DepartmentController {
 	
 	@Autowired
 	private StudentProfileDAO studentProfileDAO;
+	
+	@Autowired
+	private StudentApplicationDAO studentApplicationDAO;
 	
 	@RequestMapping("/list")
 	public String departmentList(Model model) {
@@ -194,11 +199,18 @@ public class DepartmentController {
 		// retrieve the department that we want to add the student
 		Department department = departmentDAO.getDepartment2(depID);
 		department.add(newStudent);
-
+		
 		// save student data to database,first form
 		System.out.println("SAVE STUDENT");
 		studentDAO.saveStudent(newStudent);
 				
+		int max = department.getMaxStudents();
+		max = max - 1;
+		department.setMaxStudents(max);
+		
+		// save department
+		departmentDAO.saveDepartment(department);
+	
 		// clear session
 		session.setAttribute("depID", null);
 				
@@ -237,7 +249,16 @@ public class DepartmentController {
 		
 		student.setStudentProfile(newProfile);
 		System.out.println("SET THE STUDENT");
-
+		
+		List<StudentApplication> applications = studentApplicationDAO.getApplications2();
+		for(StudentApplication a:applications) {
+			int studentID = a.getStudent().getId();
+			int appID = a.getId();
+			if(studentID == id) {
+				StudentApplication application = studentApplicationDAO.getApplication(appID);
+				studentApplicationDAO.deleteApp(application);
+			}
+		}
 		
 		studentDAO.deleteStudent(id);
 		System.out.println("DELETE THE STUDENT");
