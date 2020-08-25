@@ -61,6 +61,19 @@ public class StudentApplication {
 		this.validated = validated;
 	}
 
+	public StudentApplication(int id, String created, int income, String brotherss, String unemployed, String diffCity,
+			int points, String validated) {
+		super();
+		this.id = id;
+		this.created = created;
+		this.income = income;
+		this.brotherss = brotherss;
+		this.unemployed = unemployed;
+		this.diffCity = diffCity;
+		this.points = points;
+		this.validated = validated;
+	}
+
 	public int getId() {
 		return id;
 	}

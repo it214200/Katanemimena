@@ -38,6 +38,9 @@ tr:hover {background-color:#f5f5f5;}
 
 <div id="container">
 	
+	<i>Τα πεδία με αστερίσκο(*) ειναι υποχρεωτικά!!</i>
+	<p>Η ημερομηνία συμπληρώνεται σε αυτή τη μορφή <b>dd/MM/yyyy</b> πχ 21/12/2012</p>
+	<br></br>
 	<form:form action="saveProfile" modelAttribute="profile" method="POST">
 		
 		<!-- need to associate this data with student id -->
@@ -45,23 +48,47 @@ tr:hover {background-color:#f5f5f5;}
 		
 		<table>
 			<tbody>
+				<tr> 
+					<td><label>Τρέχων εξάμηνο(*):</label></td>
+					<td>
+						<form:select path="currentSemester">
+							<form:option value="1" label="1"/>
+							<form:option value="2" label="2"/>
+							<form:option value="3" label="3"/>
+							<form:option value="4" label="4"/>
+							<form:option value="5" label="5"/>
+							<form:option value="6" label="6"/>
+							<form:option value="7" label="7"/>
+							<form:option value="8" label="8"/>
+							<form:option value="9" label="9"/>
+							<form:option value="10" label="10"/>
+							<form:option value="11" label="11"/>
+							<form:option value="12" label="12"/>
+						</form:select>
+					</td>
+				</tr>
 				<tr>
-					<td><label>Τρέχων εξάμηνο:</label></td>
-					<td><form:input path="currentSemester"/></td>
+					<td><label>Κατάσταση φοίτησης(*):</label></td>
+					<td>
+						<form:select path="status">
+							<form:option value="Undergraduate studies" label="Προπτυχιακ΄ές Σπουδές"/>
+							<form:option value="Postgraduate studies" label="Μεταπτυχιακές Σπουδές"/>
+						</form:select>
+					</td>
 				</tr>
 				
 				<tr>
-					<td><label>Κατάσταση φοίτησης:</label></td>
-					<td><form:input path="status"/></td>
+					<td><label>Ενεργός(*):</label></td>
+					<td>
+						<form:select path="active">
+							<form:option value="Active" label="Ενεργός"/>
+							<form:option value="Inactive" label="Μη ενεργός"/>
+						</form:select>
+					</td>
 				</tr>
 				
 				<tr>
-					<td><label>Ενεργός:</label></td>
-					<td><form:input path="active"/></td>
-				</tr>
-				
-				<tr>
-					<td><label>Εγγεγραμένος απο:</label></td>
+					<td><label>Εγγεγραμένος απο(*):</label></td>
 					<td><form:input path="registeredFrom"/></td>
 				</tr>
 				

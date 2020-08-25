@@ -64,6 +64,17 @@ public class Student {
 		this.lastName = lastName;
 		this.email = email;
 	}
+	
+	public Student(int id, String codeNumber, String firstName, String lastName, String email,
+			StudentProfile studentProfile) {
+		super();
+		this.id = id;
+		this.codeNumber = codeNumber;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.studentProfile = studentProfile;
+	}
 
 	public int getId() {
 		return id;
