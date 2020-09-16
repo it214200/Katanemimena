@@ -60,6 +60,7 @@
   </div>
 </nav>
 
+<h3>Welcome</h3>
 <!-- Display User ID -->
 <p>
 	User:<security:authentication property="principal.username"/>

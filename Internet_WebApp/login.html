@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/styleform.css">
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script  src="/js/loginForm.js" defer></script>
+</head>
+<body>
+
+
+<form class="box" id="form" action="/index.html" method="GET">
+	<div id="error" style="color:red;"></div>
+	<h1>Login</h1>
+	<input type="text" id="email1" onfocus="this.email1=''" name="email1" autocomplete="on" placeholder="Email" oninput="getData()" required>
+	<input type="password" id="password1" name="password1" autocomplete="on" placeholder="Password" required>
+	<input type="submit" name="submit">
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HUA APP</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/js/applications.js" defer></script>
+</head>
+<body>
+
+<nav>
+    <div class="site-title">
+        <a href="/"><h1>HUA APP</h1></a>
+        <p>Informatics & Telematics</p>
+    </div>
+    <ul>
+        <li><a href="/">Homepage</a></li>
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Application</a>
+            <div class="dropdown-content">
+              <a href="/applications.html">Application List</a>
+              <a href="/create.html">New Application</a>
+            </div>
+        </li>
+        <li><a href="/profile.html">Profile</a></li>
+        <li><a href="#" onclick="logOut()"><b style="color:black;">Logout</b></a></li>
+
+    </ul>
+</nav>
+
+  <div class="application content">
+        <h2>Application List</h2>
+        <ul id='p-id'></ul>      
+  </div>
+
+  <footer>
+    Copyright &copy; Loukas Augeriou
+  </footer>
+
+</body>
+</html>

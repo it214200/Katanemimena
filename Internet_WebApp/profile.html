@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HUA APP</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/js/profile.js" defer></script>
+</head>
+<body>
+
+<nav>
+    <div class="site-title">
+        <a href="/"><h1>HUA APP</h1></a>
+        <p>Informatics & Telematics</p>
+    </div>
+    <ul>
+        <li><a href="/">Homepage</a></li>
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Application</a>
+            <div class="dropdown-content">
+              <a href="/applications.html">Application List</a>
+              <a href="/create.html">New Application</a>
+            </div>
+        </li>
+        <li><a href="/profile.html">Profile</a></li>
+        <li><a href="#" onclick="logOut()"><b style="color:black;">Logout</b></a></li>
+
+    </ul>
+</nav>
+
+  <div class="profile content">
+        <h2>Student Profile</h2>
+        
+        <ul>
+            <li>AM: <span id="codeNumber"></span></li>
+            <li>First Name: <span id="fname"></span></li>
+            <li>Last Name: <span id="lname"></span></li>
+            <li>Email: <span id="email"></span></li>
+            <li>Current Semester: <span id="semester"></span></li>
+            <li>Status of Studies: <span id="status"></span></li>
+            <li>Active: <span id="active"></span></li>
+            <li>Registered From: <span id="from"></span></li>
+            <li>Mother's Name: <span id="mName"></span></li>
+            <li>Father's Name: <span id="fName"></span></li>
+            <li>Birth Date: <span id="date"></span></li>
+            <li>Phone: <span id="phone"></span></li>
+        </ul>
+
+    </div>
+
+  <footer>
+    Copyright &copy; Loukas Augeriou
+  </footer>
+
+</body>
+</html>

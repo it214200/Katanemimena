@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HUA APP</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/js/create.js" defer></script>
+</head>
+<body>
+
+<nav>
+    <div class="site-title">
+        <a href="/"><h1>HUA APP</h1></a>
+        <p>Informatics & Telematics</p>
+    </div>
+    <ul>
+        <li><a href="/">Homepage</a></li>
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Application</a>
+            <div class="dropdown-content">
+              <a href="/applications.html">Application List</a>
+              <a href="/create.html">New Application</a>
+            </div>
+        </li>
+        <li><a href="/profile.html">Profile</a></li>
+        <li><a href="#" onclick="logOut()"><b style="color:black;">Logout</b></a></li>
+
+    </ul>
+</nav>
+
+  <div class="create-blog content">    
+    <form action="#" id="target">
+      <h2>Fill in the Application form</h2>
+      
+      <label for="snippet">Income:</label>
+      <input type="number" id="income" name="income" min="0" max="100000"required>
+
+      <label for="brotherss">Choose number of brothers:</label>
+        <select id="brotherss" name="brotherss" required>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+      </select>
+
+      <label for="unemployed">Unemployed:</label>
+      <select id="unemployed" name="unemployed">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+      
+      <label for="diffCity">Study in different city from home:</label>
+      <select id="diffCity" name="diffCity">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+      <br>
+      <input type="submit" name="submit">
+    </form>
+  </div>
+
+  <footer>
+    Copyright &copy; Loukas Augeriou
+  </footer>
+
+</body>
+</html>

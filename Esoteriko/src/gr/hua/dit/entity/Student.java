@@ -75,6 +75,18 @@ public class Student {
 		this.email = email;
 		this.studentProfile = studentProfile;
 	}
+	
+	public Student(int id, String codeNumber, String firstName, String lastName, String email,
+			StudentProfile studentProfile, List<StudentApplication> applications) {
+		super();
+		this.id = id;
+		this.codeNumber = codeNumber;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.studentProfile = studentProfile;
+		this.applications = applications;
+	}
 
 	public int getId() {
 		return id;

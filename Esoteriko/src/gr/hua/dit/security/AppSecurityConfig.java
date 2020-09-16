@@ -1,6 +1,8 @@
 package gr.hua.dit.security;
 
 
+import java.util.Arrays;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 @Configuration
@@ -27,37 +33,59 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(passwordEncoder())
-	    		.usersByUsernameQuery("select username,password, enabled from user where username=?")
-	                           .authoritiesByUsernameQuery("select username, authority from authorities where username=?");
+		auth.inMemoryAuthentication().withUser("user1").password("{noop}test123").roles("EMPLOYEE");
+
+		auth.inMemoryAuthentication().withUser("user2").password("{noop}test123").roles("EMPLOYEE");
+		auth.inMemoryAuthentication().withUser("admin").password("{noop}test123").roles("MANAGER");
+
 
 	}
-     
-     @Override
-     protected void configure(HttpSecurity http) throws Exception {
-             http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/loginPage")
-                             .loginProcessingUrl("/authUser").permitAll().and().logout().permitAll().and().exceptionHandling()
-                             .accessDeniedPage("/403");
 
-     }
-     
-     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-         registry
-                 .addResourceHandler("/resources/**")
-                 .addResourceLocations("/resources/");
-     }
-     @Override
-   public void configure(WebSecurity web) throws Exception {
-           web.ignoring().antMatchers("/resources/**");
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.csrf().disable().authorizeRequests()
+		.anyRequest().authenticated()
+		.and()
+		.formLogin().loginPage("/loginPage")
+		.loginProcessingUrl("/authUser")
+		.permitAll()
+		.and()
+		.logout().permitAll();
+	}
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry
+		.addResourceHandler("/resources/**")
+		.addResourceLocations("/resources/");
+	}
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/resources/**");
 
-           web.ignoring().antMatchers("/api/**");
+		web.ignoring().antMatchers("/api/**");
 
-   }
-     @Bean
-     public PasswordEncoder passwordEncoder() {
-             PasswordEncoder encoder = new BCryptPasswordEncoder();
-             return encoder;
-     }
-
+	}
 	
+	public void addCorsMappings(CorsRegistry registry) {
+		registry.addMapping("/**")
+        .allowedMethods("*")
+        .allowedOrigins("http://127.0.0.1:5500").allowedMethods("HEAD", "OPTIONS", "GET", "POST", "PUT", "PATCH", "DELETE")
+        .allowedMethods("PUT", "DELETE")
+        .allowedHeaders("header1", "header2", "header3")
+        .exposedHeaders("header1", "header2")
+        .allowCredentials(false).maxAge(3600);
+	}
+	
+	@Bean
+    CorsConfigurationSource corsConfigurationSource() 
+    {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList("http://127.0.0.1:5500"));
+        configuration.setAllowedMethods(Arrays.asList("GET","POST"));
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
+	//     
+
+
 }
